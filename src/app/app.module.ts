@@ -11,16 +11,20 @@ import { APP_ROUTES } from './app.routes';
 //Modulos
 import { PagesModule } from './pages/pages.module';
 
+//temporal
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,     
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
-    PagesModule,    
+    PagesModule,
+    FormsModule,    
     APP_ROUTES
   ],
   providers: [],

@@ -14,10 +14,11 @@ export class AcountSettingComponent implements OnInit {
     public _serviceAjustes: SettingService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.colocarcheck();
+  }
 
   cambiarColor(tema: string, link: any) {
-    
     this.aplicarCheck(link);
     this._serviceAjustes.aplicarTema(tema);
   }
@@ -29,5 +30,17 @@ export class AcountSettingComponent implements OnInit {
       ref.classList.remove('working');
     }
     link.classList.add('working');
+  }
+  colocarcheck() {
+    console.log('colocar check');
+    let selectores: any = document.getElementsByClassName('selector');
+    let tema = this._serviceAjustes.ajustes.tema;
+    console.log(selectores);
+    for (let ref of selectores) {      
+      if (ref.getAttribute('data-theme') === tema) {
+        ref.classList.add('working');
+        break;
+      }
+    }
   }
 }

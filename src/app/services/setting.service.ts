@@ -21,7 +21,10 @@ export class SettingService {
       this.ajustes = JSON.parse(localStorage.getItem('ajustes'));
       this.aplicarTema(this.ajustes.tema);
       console.log('cargando ajustes');
-    } else console.log('no se pueden cargar los ajustes aplicando los por defecto');
+    } else {
+      this.aplicarTema(this.ajustes.tema);
+      console.log('no se pueden cargar los ajustes aplicando los por defecto');
+    }
   }
   aplicarTema(tema: string) {
     console.log(tema);

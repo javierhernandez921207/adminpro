@@ -13,13 +13,15 @@ import { PagesModule } from './pages/pages.module';
 
 //temporal
 import { FormsModule } from '@angular/forms';
+import { GraficaDonaComponent } from './components/grafica-dona/grafica-dona.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,     
-    RegisterComponent,
+    RegisterComponent, 
   ],
   imports: [
     BrowserModule,

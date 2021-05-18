@@ -10,8 +10,10 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { SharedModule } from '../shared/shared.module';
 //temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
+import { GraficaDonaComponent } from '../components/grafica-dona/grafica-dona.component';
 //graficas
 import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
     declarations: [
@@ -19,7 +21,8 @@ import { ChartsModule } from 'ng2-charts';
         ProgressComponent,
         Graficas1Component,
         PagesComponent,
-        IncrementadorComponent
+        IncrementadorComponent,
+        GraficaDonaComponent       
     ],
     exports:[
         DashboardComponent,

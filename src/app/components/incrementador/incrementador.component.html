@@ -1,4 +1,4 @@
-<h4>{{ leyenda }}</h4>
+<h4>{{ leyenda }}-{{ porciento }}</h4>
 <div class="input-group mb-3">
   <button
     class="btn btn-danger"
@@ -8,7 +8,15 @@
   >
     <i class="mdi mdi-minus"></i>
   </button>
-  <input type="text" class="form-control" [(ngModel)]="porciento" />
+  <input #txtprogress
+    type="number"
+    class="form-control"
+    name="porciento"
+    [(ngModel)]="porciento"
+    (ngModelChange) = "onChange( $event )"
+    min="1"
+    max="100"
+  />
   <button
     class="btn btn-primary"
     type="button"

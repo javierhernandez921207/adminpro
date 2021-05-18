@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { element } from 'protractor';
+import { SettingService } from '../../services/setting.service';
 
 @Component({
   selector: 'app-acount-setting',
@@ -8,15 +9,17 @@ import { element } from 'protractor';
   styles: [],
 })
 export class AcountSettingComponent implements OnInit {
-  constructor(@Inject(DOCUMENT) private _document) {}
+  constructor(
+    @Inject(DOCUMENT) private _document,
+    public _serviceAjustes: SettingService
+  ) {}
 
   ngOnInit(): void {}
 
-  cambiarColor(color: string, link: any) {
-    console.log(color);
-    let url = `assets/css/colors/${color}.css`;
-    this._document.getElementById('tema').setAttribute('href', url);
+  cambiarColor(tema: string, link: any) {
+    
     this.aplicarCheck(link);
+    this._serviceAjustes.aplicarTema(tema);
   }
 
   aplicarCheck(link: any) {

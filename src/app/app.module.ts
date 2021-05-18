@@ -13,7 +13,8 @@ import { PagesModule } from './pages/pages.module';
 
 //temporal
 import { FormsModule } from '@angular/forms';
-import { GraficaDonaComponent } from './components/grafica-dona/grafica-dona.component';
+import { SettingService } from './services/setting.service';
+
 
 
 
@@ -29,7 +30,7 @@ import { GraficaDonaComponent } from './components/grafica-dona/grafica-dona.com
     FormsModule,    
     APP_ROUTES
   ],
-  providers: [],
+  providers: [SettingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

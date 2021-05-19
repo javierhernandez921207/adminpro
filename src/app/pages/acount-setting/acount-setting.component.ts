@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { element } from 'protractor';
-import { SettingService } from '../../services/setting.service';
+import { SettingService } from '../../services/settings/setting.service';
 
 @Component({
   selector: 'app-acount-setting',
@@ -25,17 +25,14 @@ export class AcountSettingComponent implements OnInit {
 
   aplicarCheck(link: any) {
     let selectores: any = document.getElementsByClassName('selector');
-    console.log(selectores);
     for (let ref of selectores) {
       ref.classList.remove('working');
     }
     link.classList.add('working');
   }
   colocarcheck() {
-    console.log('colocar check');
     let selectores: any = document.getElementsByClassName('selector');
     let tema = this._serviceAjustes.ajustes.tema;
-    console.log(selectores);
     for (let ref of selectores) {      
       if (ref.getAttribute('data-theme') === tema) {
         ref.classList.add('working');

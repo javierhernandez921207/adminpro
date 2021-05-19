@@ -10,13 +10,10 @@ import { APP_ROUTES } from './app.routes';
 
 //Modulos
 import { PagesModule } from './pages/pages.module';
+import { ServiceModule } from './services/service.module';
 
 //temporal
 import { FormsModule } from '@angular/forms';
-import { SettingService } from './services/setting.service';
-
-
-
 
 @NgModule({
   declarations: [
@@ -27,10 +24,11 @@ import { SettingService } from './services/setting.service';
   imports: [
     BrowserModule,
     PagesModule,
-    FormsModule,    
+    FormsModule,
+    ServiceModule,    
     APP_ROUTES
   ],
-  providers: [SettingService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

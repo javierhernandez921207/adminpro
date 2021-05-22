@@ -1,6 +1,7 @@
 import { PAGES_ROUTES } from './pages.routes';
 import { NgModule } from "@angular/core";
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
 
@@ -15,6 +16,8 @@ import { GraficaDonaComponent } from '../components/grafica-dona/grafica-dona.co
 //graficas
 import { ChartsModule } from 'ng2-charts';
 import { AcountSettingComponent } from './acount-setting/acount-setting.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import { AcountSettingComponent } from './acount-setting/acount-setting.componen
         PagesComponent,
         IncrementadorComponent,
         GraficaDonaComponent,
-        AcountSettingComponent       
+        AcountSettingComponent,
+        PromesasComponent,
+        RxjsComponent       
     ],
     exports:[
         DashboardComponent,
@@ -36,6 +41,7 @@ import { AcountSettingComponent } from './acount-setting/acount-setting.componen
         SharedModule,
         FormsModule,
         ChartsModule,
+        CommonModule,
         PAGES_ROUTES,
     ]
 })

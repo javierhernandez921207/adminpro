@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { AcountSettingComponent } from './acount-setting/acount-setting.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 const pagesRoutes: Routes = [
@@ -23,6 +25,12 @@ const pagesRoutes: Routes = [
             },
             {
                 path: 'acount-settings', component: AcountSettingComponent
+            },
+            {
+                path: 'promesas', component: PromesasComponent
+            },
+            {
+                path: 'rxjs', component: RxjsComponent
             },
             {
                 path: '', redirectTo: 'dashboard', pathMatch: 'full'

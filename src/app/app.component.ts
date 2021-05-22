@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'adminpro';
   //solo inyecto el servico y el cargar datos se llama en el constructor del servicio
   constructor(public _serviceAjustes: SettingService) {
-    
+
   }
 }

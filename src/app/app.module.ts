@@ -18,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 //temporal
 import { FormsModule } from '@angular/forms';
 
+//Toatr
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +33,9 @@ import { FormsModule } from '@angular/forms';
     PagesModule,
     FormsModule,
     ServiceModule,
-    HttpClientModule,    
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),        
     APP_ROUTES
   ],
   providers: [],

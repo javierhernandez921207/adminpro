@@ -2,6 +2,51 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
+                <form class="form-material" [formGroup]="formUser" (ngSubmit)="addUser()">
+                    <div class="form-group"
+                        [class.has-danger]="this.formUser.get('userName')?.invalid && this.formUser.get('userName')?.touched">
+                        <label for="username" class="form-control-label">User name</label>
+                        <input id="username" formControlName="userName" class="form-control" type="text">                        
+                        <div *ngIf="this.formUser.get('userName')?.invalid && this.formUser.get('userName')?.touched" class="form-control-feedback" >
+                            Registre el campo usuario
+                        </div>
+                    </div>
+                    <div class="form-group"
+                        [class.has-danger]="this.formUser.get('name')?.invalid && this.formUser.get('name')?.touched">
+                        <label for="name" class="form-control-label">Name</label>
+                        <input id="name" formControlName="name" class="form-control" type="text" required>
+                        <div *ngIf="this.formUser.get('name')?.invalid && this.formUser.get('name')?.touched" class="form-control-feedback" >
+                            Registre el campo nombre
+                        </div>
+                    </div>
+                    <div class="form-group"
+                        [class.has-danger]="this.formUser.get('lastName')?.invalid && this.formUser.get('lastName')?.touched">
+                        <label for="lastname" class="form-control-label">Last name</label>
+                        <input id="lastname" formControlName="lastName" class="form-control" type="text" required>
+                        <div *ngIf="this.formUser.get('lastName')?.invalid && this.formUser.get('lastName')?.touched" class="form-control-feedback" >
+                            Registre el campo apellidos
+                        </div>
+                    </div>
+                    <div class="form-group"
+                        [class.has-danger]="this.formUser.get('age')?.invalid && this.formUser.get('age')?.touched">
+                        <label for="age" class="form-control-label">Age</label>
+                        <input id="age" formControlName="age" class="form-control" type="number" required>
+                        <div *ngIf="this.formUser.get('age')?.invalid && this.formUser.get('age')?.touched" class="form-control-feedback" >
+                            Registre el campo edad
+                        </div>
+                    </div>
+
+                    <button [disabled]="this.formUser.invalid" type="submit" class="btn"
+                        [class.btn-primary]="this.formUser.valid">
+                        <i class="fa fa-database"></i> Adicionar</button>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
                 <table data-toggle="table" data-height="250" data-mobile-responsive="true" class="table table-hover">
                     <thead>
                         <tr>
@@ -10,16 +55,24 @@
                             <th>Name</th>
                             <th>Last Name</th>
                             <th>Age</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let usuario of usuarios" id="tr-id-1" class="tr-class-1">
+                        <tr *ngFor="let usuario of usuarios; let i = index" id="tr-id-1" class="tr-class-1">
                             <td>{{usuario.id}}</td>
                             <td>{{usuario.userName}}</td>
                             <td>{{usuario.name}}</td>
                             <td>{{usuario.lastName}}</td>
                             <td>{{usuario.age}}</td>
-                        </tr>                        
+                            <td>
+                                <i class="fa fa-pencil text-warning" (click)="editUser(i)"></i>
+                            </td>
+                            <td>
+                                <i class="fa fa-trash text-danger" (click)="deleteUser(i)"></i>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

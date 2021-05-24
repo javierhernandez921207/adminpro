@@ -1,6 +1,6 @@
 import { PAGES_ROUTES } from './pages.routes';
 import { NgModule } from "@angular/core";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
@@ -42,6 +42,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         FormsModule,
         ChartsModule,
         CommonModule,
+        ReactiveFormsModule,
         PAGES_ROUTES,
     ]
 })

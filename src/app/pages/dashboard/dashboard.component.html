@@ -1,8 +1,11 @@
 <div class="row">
     <div class="col-md-6">
         <div class="card">
+            
             <div class="card-body">
-                <form class="form-material" [formGroup]="formUser" (ngSubmit)="addUser()">
+                <h3 class="my-1">{{operacion}} usuario</h3>
+                <hr>
+                <form class="form-material" [formGroup]="formUser" (ngSubmit)="saveUser()">
                     <div class="form-group"
                         [class.has-danger]="this.formUser.get('userName')?.invalid && this.formUser.get('userName')?.touched">
                         <label for="username" class="form-control-label">User name</label>
@@ -38,7 +41,7 @@
 
                     <button [disabled]="this.formUser.invalid" type="submit" class="btn"
                         [class.btn-primary]="this.formUser.valid">
-                        <i class="fa fa-database"></i> Adicionar</button>
+                        <i class="fa fa-database"></i> Guardar </button>
                 </form>
                 <br>
             </div>
@@ -67,10 +70,10 @@
                             <td>{{usuario.lastName}}</td>
                             <td>{{usuario.age}}</td>
                             <td>
-                                <i class="fa fa-pencil text-warning" (click)="editUser(i)"></i>
+                                <i class="fa fa-pencil text-warning" (click)="editUser(usuario)"></i>
                             </td>
                             <td>
-                                <i class="fa fa-trash text-danger" (click)="deleteUser(i)"></i>
+                                <i class="fa fa-trash text-danger" (click)="deleteUser(usuario.id)"></i>
                             </td>
                         </tr>
                     </tbody>

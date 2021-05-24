@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
 
   usuarios: [IUsuario];
   formUser: FormGroup;
+  operacion = "Adicionar";
+  id: number | undefined;
 
   constructor(private _userService: UserService, private fb: FormBuilder, private toastr: ToastrService) {
     this.formUser = fb.group({
@@ -37,19 +39,58 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  addUser() {
+
+
+  saveUser() {
     let u: any = {
       username: this.formUser.get('userName')?.value,
       name: this.formUser.get('name')?.value,
       lastname: this.formUser.get('lastName')?.value,
       age: this.formUser.get('age')?.value,
     }
-    this.toastr.success("El usuario fue registrado con éxito", "Usuario registrado.");
-    this.formUser.reset();
+
+    if (this.id == undefined) {
+      //Add User 
+      this._userService.addUser(u).subscribe(
+        data => {
+          this.toastr.success("El usuario fue registrado con éxito", "Usuario registrado.");
+          this.formUser.reset();
+          this.getUsers();
+        },
+        error => {
+          this.toastr.error("Opss.. Ocurrió un error.", "Error.");
+          console.log(error);
+        });
+    } else {
+      //Edit User
+      u.id = this.id;
+      this._userService.updateUser(this.id, u).subscribe(
+        data => {
+          this.toastr.info("El usuario fue actualizado con éxito", "Usuario registrado.");
+          this.id = undefined;
+          this.operacion = "Adicionar";
+          this.formUser.reset();
+          this.getUsers();
+        },
+        error => {
+          this.toastr.error("Opss.. Ocurrió un error.", "Error.");
+          console.log(error);
+        }
+      );
+    }
   }
 
-  editUser(index: number) {
-    console.log(index);
+  editUser(usuario: any) {
+    this.operacion = "Editar";
+    this.id = usuario.id;
+
+    this.formUser.patchValue({
+      userName: usuario.userName,
+      name: usuario.name,
+      lastName: usuario.lastName,
+      age: usuario.age
+    })
+    console.log(usuario);
   }
 
   deleteUser(id: number) {
@@ -62,6 +103,7 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
 }
 
 export interface IUsuario {

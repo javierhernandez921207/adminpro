@@ -12,12 +12,20 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getListUser():Observable<any>{
+  getListUser(): Observable<any> {
     return this.http.get(this.url);
   }
-  
-  deleteUser(id:number):Observable<any>{
-    return this.http.delete(this.url+id);
+
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(this.url + id);
+  }
+
+  addUser(usuario: any): Observable<any> {
+    return this.http.post(this.url, usuario);
+  }
+
+  updateUser(id: number, usuario: any): Observable<any> {
+    return this.http.put(this.url + id, usuario);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/models/user.service';
+import { UserService } from '../../services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
@@ -23,12 +23,18 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {    
-    this._userService.getClientes().subscribe(response => {
-      this.usuarios = response.data;
-      console.log(this.usuarios);
-    });
-    console.log(this.formUser);
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this._userService.getListUser().subscribe(
+      data => {
+        console.log(data);
+        this.usuarios = data;
+      },
+      error => { console.log(error) }
+    );
   }
 
   addUser() {
@@ -38,7 +44,7 @@ export class DashboardComponent implements OnInit {
       lastname: this.formUser.get('lastName')?.value,
       age: this.formUser.get('age')?.value,
     }
-    this.toastr.success("El usuario fue registrado con éxito", "Usuario registrado.");    
+    this.toastr.success("El usuario fue registrado con éxito", "Usuario registrado.");
     this.formUser.reset();
   }
 
@@ -46,16 +52,22 @@ export class DashboardComponent implements OnInit {
     console.log(index);
   }
 
-  deleteUser(index: number) {
-    this.usuarios.splice(index, 1);
-    this.toastr.error("El usuario fue eliminado con éxito", "Usuario eliminado.")
+  deleteUser(id: number) {
+    this._userService.deleteUser(id).subscribe(
+      data => {
+        this.toastr.error("El usuario fue eliminado con éxito", "Usuario eliminado.")
+        this.getUsers()
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 }
 
 export interface IUsuario {
   id: number,
-  username: string,
   name: string,
+  username: string,
   lastname: string,
   age: number
 }
